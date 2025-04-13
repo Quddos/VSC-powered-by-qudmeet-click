@@ -4,6 +4,7 @@ import { requireSuperAdmin } from '@/lib/admin-auth';
 import Link from 'next/link';
 import UpdateRoleForm from './update-role-form';
 import DateDisplay from '../applications/date-display';
+import UserActions from './user-actions';
 
 export default async function AdminUsersPage() {
   // Ensure user is authenticated as super admin
@@ -48,8 +49,9 @@ export default async function AdminUsersPage() {
               Created: <DateDisplay date={user.created_at} />
             </div>
             {user.id !== admin.id && (
-              <div className="mt-2">
+              <div className="space-y-2">
                 <UpdateRoleForm userId={user.id} currentRole={user.role} />
+                <UserActions userId={user.id} />
               </div>
             )}
           </div>
@@ -100,7 +102,10 @@ export default async function AdminUsersPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {user.id !== admin.id && (
-                      <UpdateRoleForm userId={user.id} currentRole={user.role} />
+                      <div className="space-y-2">
+                        <UpdateRoleForm userId={user.id} currentRole={user.role} />
+                        <UserActions userId={user.id} />
+                      </div>
                     )}
                   </td>
                 </tr>
