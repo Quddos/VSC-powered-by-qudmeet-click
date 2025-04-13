@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { UserButton } from '@clerk/nextjs';
 import { useState } from 'react';
 import AdminLogout from '@/components/admin-logout';
@@ -23,11 +24,20 @@ export default function Header({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm py-4">
+    <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-2 sm:gap-4">
-          <Link href="/" className="text-xl sm:text-2xl font-bold text-gray-800 truncate max-w-[180px] sm:max-w-none">
-            {title}
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo bg.png"
+              alt="Varsity Scholars Consult"
+              width={50}
+              height={50}
+              className="w-12 h-12 object-contain"
+            />
+            <span className="text-xl sm:text-2xl font-bold text-gray-800 truncate max-w-[180px] sm:max-w-none">
+              {title}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
